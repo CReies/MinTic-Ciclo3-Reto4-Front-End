@@ -149,7 +149,7 @@ postClient = (e) => {
 		url: 'http://168.138.144.212:8080/Client/save',
 		data: data,
 		dataType: 'JSON',
-		success: function (response) {
+		success: function (res) {
 			$('#clientId').val('');
 			$('#clientEmail').val('');
 			$('#clientPassword').val('');
@@ -181,7 +181,7 @@ consultMessages = () => {
 				tr.appendChild(tdMessageText);
 				tr.appendChild(tdBoatId);
 				tr.appendChild(tdClientId);
-				document.getElementById('tbodyMessage').appendChild(tr);
+				document.getElementById('tbodyMessages').appendChild(tr);
 			}
 		},
 	});
@@ -204,12 +204,76 @@ postMessageText = (e) => {
 		url: 'http://168.138.144.212:8080/Message/save',
 		data: data,
 		dataType: 'JSON',
-		success: function (response) {
+		success: function (res) {
 			$('#messageId').val('');
 			$('#messageMessageText').val('');
 			$('#messageBoatId').val('');
 			$('#messageClientId').val('');
 			consultMessages();
+		},
+	});
+};
+
+consultReservations = () => {
+	$.ajax({
+		url: 'http://168.138.144.212:8080/Reservation/all',
+		type: 'get',
+		datatype: 'JSON',
+		success: function (res) {
+			for (let i = 0; i < res.items.length; i++) {
+				const reservation = res.items[i];
+				const tr = document.createElement('tr');
+				const tdId = document.createElement('td');
+				const tdStartDate = document.createElement('td');
+				const tdDevolutionDate = document.createElement('td');
+				const tdBoatId = document.createElement('td');
+				const tdClientId = document.createElement('td');
+				const tdScore = document.createElement('td');
+				tdId.innerText = reservation.id;
+				tdStartDate.innerText = reservation.startDate;
+				tdDevolutionDate.innerText = reservation.devolutionDate;
+				tdBoatId.innerText = reservation.boat.id;
+				tdClientId.innerText = reservation.client.id;
+				tdScore.innerText = reservation.score;
+				tr.appendChild(tdId);
+				tr.appendChild(tdStartDate);
+				tr.appendChild(tdDevolutionDate);
+				tr.appendChild(tdBoatId);
+				tr.appendChild(tdClientId);
+				tr.appendChild(tdScore);
+				document.getElementById('tbodyReservations').appendChild(tr);
+			}
+		},
+	});
+};
+
+postReservation = (e) => {
+	e.preventDefault();
+	const data = {
+		id: $('#reservationId').val(),
+		startDate: $('#reservationStartDate').val(),
+		devolutionDate: $('#reservationDevolutionDate').val(),
+		boat: {
+			id: $('#reservationBoatId').val(),
+		},
+		client: {
+			id: $('#reservationClientId').val(),
+		},
+		score: $('reservationScore').val(),
+	};
+	$.ajax({
+		type: 'post',
+		url: 'http://168.138.144.212:8080/Reservation/save',
+		data: data,
+		dataType: 'JSON',
+		success: function (res) {
+			$('#reservationId').val('');
+			$('#reservationStartDate').val('');
+			$('#reservationDevolutionDate').val('');
+			$('#reservationBoatId').val('');
+			$('#reservationClientId').val('');
+			$('#reservationScore').val('');
+      consultReservations();
 		},
 	});
 };

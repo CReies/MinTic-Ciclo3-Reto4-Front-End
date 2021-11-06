@@ -145,6 +145,48 @@
         <button type="submit" onclick="postMessageText(event)">Post</button>
       </form>
     </div>
+    <div>
+      <h5>Reservations</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Start Date</th>
+            <th>Devolution Date</th>
+            <th>Status</th>
+            <th>Boat Id</th>
+            <th>Client Id</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyReservations"></tbody>
+      </table>
+      <button onclick="consultResetvations()">Consult</button>
+      <form>
+        <label for="reservationId">Id</label>
+        <input type="number" name="reservationId" id="reservationId" required>
+        <br />
+        <label for="reservationStartDate">Start Date</label>
+        <input type="datetime" name="reservationStartDate" id="reservationStartDate" required />
+        <br />
+        <label for="reservationDevolutionDate">Devolution Date</label>
+        <input type="datetime" name="reservationDevolutionDate" id="reservationDevolutionDate" required>
+        <br />
+        <label for="reservationStatus">Status</label>
+        <input type="text" name="reservationStatus" id="reservationStatus" required>
+        <br />
+        <label for="reservationBoatId">Boat Id</label>
+        <input type="text" name="reservationBoatId" id="reservationBoatId" required>
+        <br />
+        <label for="reservationClientId">Client Id</label>
+        <input type="text" name="reservationClientId" id="reservationClientId" required>
+        <br />
+        <label for="reservationScore">Score</label>
+        <input type="text" name="reservationScore" id="reservationScore" required>
+        <br />
+        <button type="submit" onclick="postReservation(event)">Post</button>
+      </form>
+    </div>
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../js/main.js"></script>
