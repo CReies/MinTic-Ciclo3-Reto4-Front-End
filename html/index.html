@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reto 3</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -28,6 +29,121 @@
         <tbody id="tbodyCategories"></tbody>
       </table>
       <button onclick="consultCategories()">Consult</button>
+      <form>
+        <label for="categoryId">Id</label>
+        <input type="number" name="categoryId" id="categoryId" required>
+        <br />
+        <label for="categoryName">Name</label>
+        <input type="text" name="categoryName" id="categoryName" required>
+        <br />
+        <label for="categoryName">Description</label>
+        <input type="text" name="categoryDescription" id="categoryDescription" required>
+        <br />
+        <button type="submit" onclick="postCategory(event)">Post</button>
+      </form>
+    </div>
+    <div>
+      <h5>Boats</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Brand</th>
+            <th>Year</th>
+            <th>Category Id</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyBoats"></tbody>
+      </table>
+      <button onclick="consultBoats()">Consult</button>
+      <form>
+        <label for="boatId">Id</label>
+        <input type="number" name="boatId" id="boatId" required>
+        <br />
+        <label for="boatBrand">Brand</label>
+        <input type="text" name="boatBrand" id="boatBrand" required>
+        <br />
+        <label for="boatYear">Year</label>
+        <input type="number" name="boatYear" id="boatYear" required>
+        <br />
+        <label for="boatCategoryId">Category Id</label>
+        <input type="number" name="boatCategoryId" id="boatCategoryId" required>
+        <br />
+        <label for="boatName">Name</label>
+        <input type="text" name="boatName" id="boatName" required>
+        <br />
+        <br />
+        <label for="boatDescription">Description</label>
+        <input type="text" name="boatDescription" id="boatDescription" required>
+        <br />
+        <button type="submit" onclick="postBoat(event)">Post</button>
+      </form>
+    </div>
+    <div>
+      <h5>Clients</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyClients"></tbody>
+      </table>
+      <button onclick="consultClients()">Consult</button>
+      <form>
+        <label for="clientId">Id</label>
+        <input type="number" name="clientId" id="clientId" required>
+        <br />
+        <label for="clientEmail">Email</label>
+        <input type="text" name="clientEmail" id="clientEmail" required>
+        <br />
+        <label for="clientPassword">Password</label>
+        <input type="password" name="clientPassword" id="clientPassword" required>
+        <br />
+        <label for="clientName">Name</label>
+        <input type="text" name="clientName" id="clientName" required>
+        <br />
+        <label for="clientAge">Age</label>
+        <input type="number" name="clientAge" id="clientAge" required>
+        <br />
+        <button type="submit" onclick="postClient(event)">Post</button>
+      </form>
+    </div>
+    <div>
+      <h5>Messages</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Message Text</th>
+            <th>Boat Id</th>
+            <th>Client Id</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyMessages"></tbody>
+      </table>
+      <button onclick="consultMessages()">Consult</button>
+      <form>
+        <label for="messageId">Id</label>
+        <input type="number" name="messageId" id="messageId" required>
+        <br />
+        <label for="messageMessageText">Message Text</label>
+        <textarea name="messageMessageText" id="messageMessageText" required></textarea>
+        <br />
+        <label for="messageBoatId">Boat Id</label>
+        <input type="number" name="messageBoatId" id="messageBoatId" required>
+        <br />
+        <label for="messageClientId">Client Id</label>
+        <input type="text" name="messageClientId" id="messageClientId" required>
+        <br />
+        <button type="submit" onclick="postMessageText(event)">Post</button>
+      </form>
     </div>
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
