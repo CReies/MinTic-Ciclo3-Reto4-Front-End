@@ -32,6 +32,7 @@
       <form>
         <label for="categoryId">Id</label>
         <input type="number" name="categoryId" id="categoryId" required>
+        <button type="submit" onclick="deleteCategory(event)">Delete</button>
         <br />
         <label for="categoryName">Name</label>
         <input type="text" name="categoryName" id="categoryName" required>
@@ -39,7 +40,8 @@
         <label for="categoryName">Description</label>
         <input type="text" name="categoryDescription" id="categoryDescription" required>
         <br />
-        <button type="submit" onclick="postCategory(event)">Post</button>
+        <button type="submit" onclick="postCategory(event)">Save</button>
+        <button type="submit" onclick="putCategory(event)">Update</button>
       </form>
     </div>
     <div>
@@ -78,7 +80,8 @@
         <label for="boatDescription">Description</label>
         <input type="text" name="boatDescription" id="boatDescription" required>
         <br />
-        <button type="submit" onclick="postBoat(event)">Post</button>
+        <button type="submit" onclick="postBoat(event)">Save</button>
+        <button type="submit" onclick="putBoat(event)">Update</button>
       </form>
     </div>
     <div>
@@ -112,7 +115,8 @@
         <label for="clientAge">Age</label>
         <input type="number" name="clientAge" id="clientAge" required>
         <br />
-        <button type="submit" onclick="postClient(event)">Post</button>
+        <button type="submit" onclick="postClient(event)">Save</button>
+        <button type="submit" onclick="putClient(event)">Update</button>
       </form>
     </div>
     <div>
@@ -142,7 +146,8 @@
         <label for="messageClientId">Client Id</label>
         <input type="text" name="messageClientId" id="messageClientId" required>
         <br />
-        <button type="submit" onclick="postMessageText(event)">Post</button>
+        <button type="submit" onclick="postMessageText(event)">Save</button>
+        <button type="submit" onclick="putMessageText(event)">Save</button>
       </form>
     </div>
     <div>
@@ -184,7 +189,8 @@
         <label for="reservationScore">Score</label>
         <input type="text" name="reservationScore" id="reservationScore" required>
         <br />
-        <button type="submit" onclick="postReservation(event)">Post</button>
+        <button type="submit" onclick="postReservation(event)">Save</button>
+        <button type="submit" onclick="putReservation(event)">Update</button>
       </form>
     </div>
   </main>

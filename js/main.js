@@ -1,6 +1,6 @@
 consultCategories = () => {
 	$.ajax({
-		url: 'http://168.138.144.212:8080/Category/all',
+		url: 'http://168.138.144.212:8000/Category/all',
 		type: 'get',
 		datatype: 'application/JSON',
 		success: function (res) {
@@ -31,7 +31,7 @@ postCategory = (e) => {
 	};
 	$.ajax({
 		type: 'post',
-		url: 'http://168.138.144.212:8080/Category/save',
+		url: 'http://168.138.144.212:8000/Category/save',
 		data: data,
 		dataType: 'JSON',
 		success: function (res) {
@@ -43,9 +43,43 @@ postCategory = (e) => {
 	});
 };
 
+putCategory = (e) => {
+	e.preventDefault();
+	const data = {
+		id: $('#categoryId').val(),
+		name: $('#categoryName').val(),
+		description: $('#categoryDescription').val(),
+	};
+	$.ajax({
+		type: 'put',
+		url: 'http://168.138.144.212:8000/Category/update',
+		data: JSON.stringify(data),
+		dataType: 'JSON',
+		success: function (res) {
+			$('#categoryId').val('');
+			$('#categoryName').val('');
+			$('#categoryDescription').val('');
+			consultCategories();
+		},
+	});
+};
+
+deleteCategory = (e) => {
+	e.preventDefault();
+	const id = $('#categoryId').val();
+	$.ajax({
+		type: 'delete',
+		url: `http://168.138.144.212:8000/Category/${id}`,
+		dataType: 'JSON',
+		success: function (res) {
+			$('#categoryId').val('');
+		},
+	});
+};
+
 consultBoats = () => {
 	$.ajax({
-		url: 'http://168.138.144.212:8080/Boat/all',
+		url: 'http://168.138.144.212:8000/Boat/all',
 		type: 'get',
 		datatype: 'JSON',
 		success: function (res) {
@@ -90,7 +124,7 @@ postBoat = (e) => {
 	};
 	$.ajax({
 		type: 'post',
-		url: 'http://168.138.144.212:8080/Boat/save',
+		url: 'http://168.138.144.212:8000/Boat/save',
 		data: data,
 		dataType: 'JSON',
 		success: function (res) {
@@ -105,9 +139,51 @@ postBoat = (e) => {
 	});
 };
 
+putBoat = (e) => {
+	e.preventDefault();
+	const data = {
+		id: $('#boatId').val(),
+		brand: $('#boatBrand').val(),
+		year: $('#boatYear').val(),
+		category: {
+			id: $('#boatCategoryId').val(),
+		},
+		name: $('#boatName'),
+		description: $('#boatDescription'),
+	};
+	$.ajax({
+		type: 'put',
+		url: 'http://168.138.144.212:8000/Boat/update',
+		data: JSON.stringify(data),
+		dataType: 'JSON',
+		success: function (res) {
+			$('#boatId').val('');
+			$('#boatBrand').val('');
+			$('#boatYear').val('');
+			$('#boatCategoryId').val('');
+			$('#boatName').val('');
+			$('#boatDescription').val('');
+			consultBoats();
+		},
+	});
+};
+
+deleteBoat = (e) => {
+	e.preventDefault();
+	const id = $('#boatId').val();
+	$.ajax({
+		type: 'delete',
+		url: `http://168.138.144.212:8000/Boat/${id}`,
+		dataType: 'JSON',
+		success: function (res) {
+			$('#boatId').val('value');
+		},
+	});
+};
+
 consultClients = () => {
 	$.ajax({
-		url: 'http://168.138.144.212:8080/Client/all',
+		url: 'http://168.138.144.212:8000/Client/all',
 		type: 'get',
 		datatype: 'JSON',
 		success: function (res) {
@@ -146,7 +222,7 @@ postClient = (e) => {
 	};
 	$.ajax({
 		type: 'post',
-		url: 'http://168.138.144.212:8080/Client/save',
+		url: 'http://168.138.144.212:8000/Client/save',
 		data: data,
 		dataType: 'JSON',
 		success: function (res) {
@@ -160,9 +236,47 @@ postClient = (e) => {
 	});
 };
 
+putClient = (e) => {
+	e.preventDefault();
+	const data = {
+		id: $('#clientId').val(),
+		email: $('#clientEmail').val(),
+		password: $('#clientPassword').val(),
+		name: $('#clientName').val(),
+		age: $('#clientAge').val(),
+	};
+	$.ajax({
+		type: 'put',
+		url: 'http://168.138.144.212:8000/Client/update',
+		data: JSON.stringify(data),
+		dataType: 'JSON',
+		success: function (res) {
+			$('#clientId').val('');
+			$('#clientEmail').val('');
+			$('#clientPassword').val('');
+			$('#clientName').val('');
+			$('#clientAge').val('');
+			consultClients();
+		},
+	});
+};
+
+deleteCategory = (e) => {
+	e.preventDefault();
+	const id = $('#clientId').val();
+	$.ajax({
+		type: 'delete',
+		url: `http://168.138.144.212:8000/Client/${id}`,
+		dataType: 'JSON',
+		success: function (res) {
+			$('#clientId').val('');
+		},
+	});
+};
+
 consultMessages = () => {
 	$.ajax({
-		url: 'http://168.138.144.212:8080/Message/all',
+		url: 'http://168.138.144.212:8000/Message/all',
 		type: 'get',
 		datatype: 'JSON',
 		success: function (res) {
@@ -201,7 +315,7 @@ postMessageText = (e) => {
 	};
 	$.ajax({
 		type: 'post',
-		url: 'http://168.138.144.212:8080/Message/save',
+		url: 'http://168.138.144.212:8000/Message/save',
 		data: data,
 		dataType: 'JSON',
 		success: function (res) {
@@ -214,9 +328,49 @@ postMessageText = (e) => {
 	});
 };
 
+putMessageText = (e) => {
+	e.preventDefault();
+	const data = {
+		id: $('#messageId').val(),
+		messagetext: $('#messageMessageText').val(),
+		boat: {
+			id: $('#messageBoatId').val(),
+		},
+		client: {
+			id: $('#messageClientId').val(),
+		},
+	};
+	$.ajax({
+		type: 'put',
+		url: 'http://168.138.144.212:8000/Message/update',
+		data: JSON.stringify(data),
+		dataType: 'JSON',
+		success: function (res) {
+			$('#messageId').val('');
+			$('#messageMessageText').val('');
+			$('#messageBoatId').val('');
+			$('#messageClientId').val('');
+			consultMessages();
+		},
+	});
+};
+
+deleteMessageText = (e) => {
+	e.preventDefault();
+	const id = $('#messagetId').val();
+	$.ajax({
+		type: 'delete',
+		url: `http://168.138.144.212:8000/Message/${id}`,
+		dataType: 'JSON',
+		success: function (res) {
+			$('#messageId').val('');
+		},
+	});
+};
+
 consultReservations = () => {
 	$.ajax({
-		url: 'http://168.138.144.212:8080/Reservation/all',
+		url: 'http://168.138.144.212:8000/Reservation/all',
 		type: 'get',
 		datatype: 'JSON',
 		success: function (res) {
@@ -263,7 +417,7 @@ postReservation = (e) => {
 	};
 	$.ajax({
 		type: 'post',
-		url: 'http://168.138.144.212:8080/Reservation/save',
+		url: 'http://168.138.144.212:8000/Reservation/save',
 		data: data,
 		dataType: 'JSON',
 		success: function (res) {
@@ -273,7 +427,51 @@ postReservation = (e) => {
 			$('#reservationBoatId').val('');
 			$('#reservationClientId').val('');
 			$('#reservationScore').val('');
-      consultReservations();
+			consultReservations();
+		},
+	});
+};
+
+putReservation = (e) => {
+	e.preventDefault();
+	const data = {
+		id: $('#reservationId').val(),
+		startDate: $('#reservationStartDate').val(),
+		devolutionDate: $('#reservationDevolutionDate').val(),
+		boat: {
+			id: $('#reservationBoatId').val(),
+		},
+		client: {
+			id: $('#reservationClientId').val(),
+		},
+		score: $('reservationScore').val(),
+	};
+	$.ajax({
+		type: 'post',
+		url: 'http://168.138.144.212:8000/Reservation/update',
+		data: JSON.stringify(data),
+		dataType: 'JSON',
+		success: function (res) {
+			$('#reservationId').val('');
+			$('#reservationStartDate').val('');
+			$('#reservationDevolutionDate').val('');
+			$('#reservationBoatId').val('');
+			$('#reservationClientId').val('');
+			$('#reservationScore').val('');
+			consultReservations();
+		},
+	});
+};
+
+deleteReservation = (e) => {
+	e.preventDefault();
+	const id = $('#reservationId').val();
+	$.ajax({
+		type: 'delete',
+		url: `http://168.138.144.212:8000/Reservation/${id}`,
+		dataType: 'JSON',
+		success: function (res) {
+			$('#reservationId').val('');
 		},
 	});
 };
